@@ -1,0 +1,23 @@
+# 빌드, 설치, 로그 파일 제외
+build/
+install/
+log/
+OceanSweep/
+
+# 빌드 중간 파일 제외
+**/*.o
+**/*.so
+**/*.a
+**/*.pyc
+**/__pycache__/
+
+# CMake 및 colcon 관련 불필요한 파일 제외
+colcon/
+CMakeLists.txt.user
+vcxproj.*
+*.swp
+
+# 나머지 C++, Python 소스 코드 제외 (필요하면 조정 가능)
+*.cpp
+*.h
+*.hpp
