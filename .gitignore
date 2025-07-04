@@ -1,0 +1,27 @@
+# ROS 2 빌드/설치/로그
+build/
+install/
+log/
+
+# colcon & ROS 2 test outputs
+.colcon/
+test_results/
+
+# Python 캐시 파일
+__pycache__/
+*.py[cod]
+
+# 에디터/IDE 설정
+.vscode/
+.idea/
+*.swp
+
+# 시스템 파일
+.DS_Store
+Thumbs.db
+
+# 백업/임시 파일
+*.bak
+*.tmp
+*~
+
