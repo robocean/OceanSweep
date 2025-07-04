@@ -1,42 +1,53 @@
-# KMOUCapstone – GPS & Vision-Based Amphibious Marine Debris Collection Robot
+# GPS & Vision‑Based Amphibious Marine Debris Collection Robot
 
-> **국립한국해양대학교 인공지능공학부**  
 > GPS 및 영상 기반 P제어기를 적용한 수륙양용 해양쓰레기 수거로봇 개발
 
-![robot_photo](https://drive.google.com/uc?export=view&id=1js2hFgn9yw9kBC1bLLEw2Lgo3DgyNQmg)  
-<sub>*↑ 수륙양용 해양쓰레기 수거 로봇 사진 (샘플)*</sub>
+*(본 README는 개괄 정보만을 담고 있으며, 각 서브 프로젝트의 세부 사용법은 폴더별 **`README.md`**에서 확인해주세요.)*
 
 ---
 
-## 🌊 프로젝트 개요
+## 📌 프로젝트 개요
 
-**KMOUCapstone** 프로젝트는 해양 쓰레기 문제에 대응하기 위해 **자율적으로 쓰레기를 탐지하고 수거할 수 있는 수륙양용 로봇 시스템**을 개발하는 것을 목표로 한다. 본 시스템은 육상환경에서 waypoint기반 자율주행을, 수상환경에서는 쓰레기 탐지및 추적을 수행하며, 핵심기술은 다음과 같이 구성되어 있다.
-
-### ✅ 핵심 구성요소
-
-- **위치 추정 및 경로 추종 제어**
-  - DGPS 보정과 TM 좌표계(EPSG:5175) 기반 위치 추정
-  - Waypoint 기반 자율주행 및 P제어기 적용
-  - Kalman Filter를 통한 GPS noise 보정
-- **실시간 영상 기반 쓰레기 인식 및 정렬**
-  - YOLOv5 기반 객체 탐지
-  - Jetson Nano에서 TensorRT 최적화를 통해 실시간 추론
-  - 객체 중심 오차(Δx)에 따른 비례제어(P-Control) 방식 정렬
-- **네트워크 통신 시스템**
-  - TCP 기반 릴레이 서버를 통한 GPS 보정 정보 수신
-  - Web 기반 사용자 인터페이스를 통한 경로 지정
-- **하드웨어 설계**
-  - 수륙양용 주행을 위한 쌍동선 구조 + 패들형 바퀴
-  - 기계적 방수 구조 (메커니컬 씰 포함)
-  - 중앙 유입 구조의 쓰레기 수거 메커니즘
-
-### 🔬 실험 환경
-
-- **육상**: DGPS 기반 waypoint 자율 주행 실험
-- **수조**: 영상 기반 쓰레기 탐지 및 회수 실험
-- 실험은 실제 해양 환경의 제약(파도, 기상, 안전성 등)을 고려하여 분리된 환경에서 수행됨
+- **목적**: 해양 쓰레기 수거 자동화를 위한 자율주행 로봇 시스템 설계·구현
+- **핵심 기술**  
+  - **위치 추정**: DGPS 보정 + TM(EPSG:5175) 좌표계 변환  
+  - **경로 추종**: Waypoint 기반 P 제어기  
+  - **쓰레기 추적**: YOLOv5 + TensorRT 실시간 추론  
+  - **사용자 인터페이스**: Web 기반 Waypoint 입력 및 모니터링
+- **주요 하드웨어**: Raspberry Pi, Jetson Nano, Arduino (Neo‑6M GPS), 수륙양용 구동 플랫폼
 
 ---
 
-> 📌 *이 README는 전체 개요를 담고 있으며, 각 하위 폴더의 `README.md`에서 세부 설명을 확인하실 수 있습니다.*
+## 🗂️ 디렉터리 구조
 
+| 폴더                | 플랫폼                      | 설명                                      |
+|---------------------|-----------------------------|-------------------------------------------|
+| `waypoint/`         | Raspberry Pi / ROS 2        | DGPS 보정 + Waypoint 추종 노드              |
+| `trash_tracking/`   | Jetson Nano / Python        | 영상 기반 쓰레기 위치 인식 및 전송           |
+| `server/`           | Windows PC                  | FastAPI 백엔드, Svelte 프론트 + TCP Relay 서버 |
+| `arduino/`          | Arduino                     | GPS 오차 측정 및 릴레이 서버로 전송           |
+
+> 각 폴더 내에 별도의 `README.md`를 통해 설치 방법 및 실행 방법을 안내할 예정입니다.
+
+---
+
+## ⚙️ 기술 스택
+
+- **ROS 2 Dashing** (`rclpy`)
+- **Jetson Nano** (PyTorch 1.10 + TensorRT 8.x)
+- **FastAPI / Svelte** + DuckDNS + HTTPS (Let’s Encrypt)
+- **Arduino IDE 2.3.2 / Neo-6M GPS**
+- **좌표 변환**: WGS‑84 → TM(EPSG:5175) (`pyproj` 사용)
+
+---
+
+## 🚀 빠른 시작
+
+```bash
+# 1. 레포지토리 클론
+git clone git@github.com:robocean/KMOUCapstone.git
+cd KMOUCapstone
+
+# 2. 예시: 라즈베리파이 환경 실행
+cd waypoint
+# → 자세한 내용은 waypoint/README.md 참고
