@@ -1,0 +1,7 @@
+package.xml
+resource/
+setup.cfg
+setup.py
+test/
+trash_trace.trt
+trash_tracking/
