@@ -1,0 +1,13 @@
+# IDE 관련 폴더 및 파일
+.idea/
+
+# Python 관련 불필요한 폴더
+__pycache__/
+
+# FastAPI 서버의 불필요한 폴더
+api/
+json/
+
+# 프론트엔드 폴더
+frontend/
+!frontend/src/App.svelte
