@@ -50,14 +50,39 @@ Waypoint 기반 자율주행은 로봇이 일련의 미리 정의된 지점(wayp
 
 GPS 신호는 일반적인 위치 오차 외에도 순간적인 큰 노이즈가 포함되는 특성이 있다. 이를 보정하고 정확한 위치 추정을 위해 2차원 위치 및 속도를 상태로 갖는 Kalman 필터를 설계하였다. 로봇의 상태벡터는 $x=[x~y~v_{x}v_{y}]^{T}$로 정의되며, 시스템 행렬 A 및 측정 행렬 H는 각각 다음과 같이 설정된다:
 
-$A=[\begin{matrix}1&0&\Delta t&0\\ 0&1&0&\Delta t\\ 0&0&1&0\\ 0&0&0&1\end{matrix}]$
+$$
+A = \begin{bmatrix}
+1 & 0 & \Delta t & 0 \\
+0 & 1 & 0 & \Delta t \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$$
 
-$H=[\begin{matrix}1&0&0&0\\ 0&1&0&0\end{matrix}]$
+$$
+H = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0
+\end{bmatrix}
+$$
 
 시스템 오차 공분산 행렬 Q 및 측정 오차 공분산 행렬 R은 실측 데이터를 기반으로 구성되며, 이는 다음과 같다:
 
-$Q=diag[1.3739~3.8002~1.1838~5.9331]\times10^{-10}$
-$R=diag[5.6017~1.7659]\times10^{-10}$
+$$
+Q = \begin{bmatrix}
+1.3739 \times 10^{-10} & 0 & 0 & 0 \\
+0 & 3.8002 \times 10^{-10} & 0 & 0 \\
+0 & 0 & 1.1838 \times 10^{-10} & 0 \\
+0 & 0 & 0 & 5.9331 \times 10^{-10}
+\end{bmatrix}
+$$
+
+$$
+R = \begin{bmatrix}
+5.6017 \times 10^{-10} & 0 \\
+0 & 1.7659 \times 10^{-10}
+\end{bmatrix}
+$$
 
 Kalman 필터는 이러한 모델과 GPS 측정값을 융합하여 최적의 위치 및 속도 추정값을 제공함으로써 GPS 노이즈를 효과적으로 억제한다. IMU Yaw 데이터의 경우, 별도의 1차 저주파 통과 필터(`Arduino Module`에서 구현)를 적용하여 센서 노이즈를 감소시킨다.
 
@@ -79,8 +104,9 @@ Kalman 필터는 이러한 모델과 GPS 측정값을 융합하여 최적의 위
 로봇의 선속도 $v_{ref}$는 $0.3 \text{ [m/s]}$로 정의하였으며, 각속도($\omega_{ref}$)는 로봇의 자세 오차($\theta-\psi$)와 경로부터의 수직 거리 오차($\Delta y$)에 대해 비례 제어 방식으로 계산된다. 로봇의 정확한 방위각을 측정하기 위해 IMU 센서의 캘리브레이션을 수행하였으며, 이 과정에서 국토지리정보원에서 제공하는 지자기 편각 정보를 반영한다.
 
 $$
-\begin{bmatrix}\dot{x}\\ \dot{y}\\ \dot{\theta}\end{bmatrix}= \begin{bmatrix}\cos\theta&0\\ \sin\theta&0\\ 0&1\end{bmatrix} \begin{bmatrix}v_{ref}\\ \omega_{ref}\end{bmatrix}
+\begin{bmatrix}\dot{x}\\\dot{y}\\\dot{\theta}\end{bmatrix}= \begin{bmatrix}\cos\theta & 0\\ \sin\theta & 0\\ 0 & 1\end{bmatrix} \begin{bmatrix}v_{ref}\\\omega_{ref}\end{bmatrix}
 $$
+
 
 **제어식:**
 $\omega_{ref}=-k_{1}(\theta-\psi)-k_{2}\Delta y$
