@@ -101,12 +101,14 @@ Kalman 필터는 이러한 모델과 GPS 측정값을 융합하여 최적의 위
 ![waypoint algorithm](https://drive.google.com/uc?export=view&id=19hCuSjvjcTaxqvItGsbjW2TSGMXuVvr5)  
 <sub>*waypoint 알고리즘*</sub>
 
+이를 위해 2차원 평면에서의 이동체의 운동학 모델을 이용한다.
+$$
+\begin{bmatrix}\dot{x}\\ \dot{y}\\ \dot{\theta}\end{bmatrix}= \begin{bmatrix}\cos\theta & 0\\ \sin\theta & 0\\ 0 & 1\end{bmatrix} \begin{bmatrix}v_{ref}\\\omega_{ref}\end{bmatrix}
+$$
+
+해당 운동학 모델을 이용하여 로봇의 선속도와 회전속도를 결정하면 로봇이 추종해야하는 waypoint경로를 따라 이동하도록 제어할 수 있다.
+
 로봇의 선속도 $v_{ref}$는 $0.3 \text{ [m/s]}$로 정의하였으며, 각속도($\omega_{ref}$)는 로봇의 자세 오차($\theta-\psi$)와 경로부터의 수직 거리 오차($\Delta y$)에 대해 비례 제어 방식으로 계산된다. 로봇의 정확한 방위각을 측정하기 위해 IMU 센서의 캘리브레이션을 수행하였으며, 이 과정에서 국토지리정보원에서 제공하는 지자기 편각 정보를 반영한다.
-
-$$
-\begin{bmatrix}\dot{x}\\\dot{y}\\\dot{\theta}\end{bmatrix}= \begin{bmatrix}\cos\theta & 0\\ \sin\theta & 0\\ 0 & 1\end{bmatrix} \begin{bmatrix}v_{ref}\\\omega_{ref}\end{bmatrix}
-$$
-
 
 **제어식:**
 $\omega_{ref}=-k_{1}(\theta-\psi)-k_{2}\Delta y$
