@@ -16,6 +16,14 @@
   - **사용자 인터페이스**: Web 기반 Waypoint 입력 및 모니터링
 - **하드웨어**: Raspberry Pi, Jetson Nano, Arduino mega2560, Neo‑6M(GPS), MPU9250(IMU), 수륙양용 구동 플랫폼
 
+이 문서는 수륙양용 해양쓰레기 수거로봇 플랫폼 개발에 관한 내용을 작성하였다. 수륙양용을 위해 로봇은 방수설계가 적용되었으며, 설계단계에서 부력계산을 통해 로봇의 수상운행 가능성을 검토하였다. 그러나 실제 해양환경에서의 실험은 기상문제와 안전상의 문제로 실험 환경을 육상 환경과 수조 환경으로 분리하여 구현하였다. 육상에서는 waypoint 기반 자율주행 기능을, 수조 환경에서는 인공지능 기반 영상처리를 통해 쓰레기 탐지 및 수거 기능을 검증하였다.
+
+![flow chart](https://drive.google.com/uc?export=view&id=1SsmRRuB_ef9-9xoN4hEDy-MCKG0wIf5V)  
+<sub>*육지환경 흐름도*</sub>
+
+![flow chart](https://drive.google.com/uc?export=view&id=1xj7-aLJtd8UocgSyo67M9hwgq7LmD7An)  
+<sub>*수조환경 흐름도*</sub>
+
 ---
 
 ## 🗂️ 디렉터리 구조
