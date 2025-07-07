@@ -127,14 +127,14 @@ $\omega_{ref}=-k_{1}(\theta-\psi)-k_{2}\Delta y$
 ![Point-to-segment distance formula](https://drive.google.com/uc?export=view&id=1o-AjQsZhQuBvOzW9wY8S7B0CzbScFonN)  
 <sub>*로봇 위치에 따른 선분사이의 거리 판단*</sub>
 
-로봇의 현재 위치 $P(x_p, y_p)$와 경로 상의 선분 $AB$ (시작점 $A(x_1, y_1)$, 끝점 $B(x_2, y_2)$)가 주어졌을 때, 점 $P$에서 선분 $AB$까지의 최단 거리 $d$는 다음 단계에 따라 계산된다.
+로봇의 현재 위치 $P(x_p, y_p)$와 경로 상의 선분 $AB$ (시작점 $A(x_1, y_1)$, 끝점 $B(x_2, y_2)$ )가 주어졌을 때, 점 $P$에서 선분 $AB$까지의 최단 거리 $d$는 다음 단계에 따라 계산된다.
 
 1.  **벡터 정의**:
     * 벡터 $\vec{AB} = (x_2 - x_1, y_2 - y_1)$
     * 벡터 $\vec{AP} = (x_p - x_1, y_p - y_1)$
 
 2.  **$P$의 선분 $AB$에 대한 투영점 결정**:
-    * 점 $P$에서 직선 $AB$에 내린 수선의 발이 선분 $AB$ 내에 위치하는지 여부를 판단하기 위해, 벡터 $\vec{AB}$와 벡터 $\vec{AP}$의 내적을 활용하여 투영 계수 $t$를 계산한다:
+    * 점 $P$에서 직선 $AB$에 내린 수선의 발이 선분 $AB$ 내에 위치하는지 여부를 판단하기 위해, 벡터 $\vec{AB}$와 벡터 $\vec{AP}$의 내적을 활용하여 투영 계수 $t$를 계산한다: \
         ![Point-to-segment distance formula](https://drive.google.com/uc?export=view&id=1367VZflangfO-nOE2dkW9Rkxs-Jyw5av)  
 
     * **$t$ 값에 따른 경우 분리**:
@@ -142,7 +142,7 @@ $\omega_{ref}=-k_{1}(\theta-\psi)-k_{2}\Delta y$
             ![Point-to-segment distance formula](https://drive.google.com/uc?export=view&id=1bZCF_FI5FeWVwl5LjulxqnIXBJJIGjA3)  
         * **$t > 1$**: 수선의 발이 선분 $AB$의 끝점 $B$ 바깥쪽에 위치하는 경우. 최단 거리는 점 $P$와 점 $B$ 사이의 거리이다.
             ![Point-to-segment distance formula](https://drive.google.com/uc?export=view&id=1Jl4qqvja79le8lK8FQO6eOO8_F18se1I)  
-        * **$0 \le t \le 1$**: 수선의 발이 선분 $AB$ 내에 위치하는 경우. 최단 거리는 점 $P$에서 직선 $AB$까지의 수직 거리이다. 직선 $AB$의 방정식 $Ax' + By' + C = 0$을 사용하여 계산할 수 있으며, 일반적인 형태는 다음과 같다:
+        * **$0 \le t \le 1$**: 수선의 발이 선분 $AB$ 내에 위치하는 경우. 최단 거리는 점 $P$에서 직선 $AB$까지의 수직 거리이다. 직선 $AB$의 방정식 $Ax' + By' + C = 0$을 사용하여 계산할 수 있으며, 일반적인 형태는 다음과 같다: \
             ![Point-to-segment distance formula](https://drive.google.com/uc?export=view&id=1j1jf7HmAwQ34WdqGq6mXIrRvlzjrji2C)  
 
     (여기서 $\Delta y$는 이 $d$ 값과 로봇의 진행 방향 및 경로 선분의 방향을 고려하여 양수 또는 음수로 결정될 수 있다.)
@@ -156,7 +156,7 @@ $\omega_{ref}=-k_{1}(\theta-\psi)-k_{2}\Delta y$
 ![Differential Drive](https://drive.google.com/uc?export=view&id=1pv8RuIJiXgIhHn5OjNqhwO9M2KtFWXlG)  
 <sub>*차동구동 기구학*</sub>
 
-**차동 구동 기구학 역변환:**
+**차동 구동 기구학 역변환:** \
 ![Point-to-segment distance formula](https://drive.google.com/uc?export=view&id=1LsFLFlp6W4kt8lR6FCDlcMUPwrT39lVi)  
 
 * $R$: 바퀴 반지름
