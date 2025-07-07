@@ -103,7 +103,7 @@ Kalman 필터는 이러한 모델과 GPS 측정값을 융합하여 최적의 위
 
 이를 위해 2차원 평면에서의 이동체의 운동학 모델을 이용한다.
 $$
-\begin{bmatrix}\dot{x}\\ \dot{y}\\ \dot{\theta}\end{bmatrix}= \begin{bmatrix}\cos\theta & 0\\ \sin\theta & 0\\ 0 & 1\end{bmatrix} \begin{bmatrix}v_{ref}\\\omega_{ref}\end{bmatrix}
+\begin{bmatrix}\dot{x}\\\dot{y}\\\dot{\theta}\end{bmatrix}= \begin{bmatrix}\cos\theta & 0\\ \sin\theta & 0\\ 0 & 1\end{bmatrix} \begin{bmatrix}v_{ref}\\\omega_{ref}\end{bmatrix}
 $$
 
 해당 운동학 모델을 이용하여 로봇의 선속도와 회전속도를 결정하면 로봇이 추종해야하는 waypoint경로를 따라 이동하도록 제어할 수 있다.
