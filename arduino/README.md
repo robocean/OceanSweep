@@ -41,8 +41,7 @@ $x_k = \alpha \cdot x_{k-1} + (1 - \alpha) \cdot z_k$
 * $\alpha$: 0과 1 사이의 상수 (가중치)
 * $x_k$: 현재 측정값
 
-상기 식을 전개하면 이전 측정값들이 현재 추정값에 점진적으로 감소하는 가중치로 반영되는 것을 확인할 수 있다.\
-
+상기 식을 전개하면 이전 측정값들이 현재 추정값에 점진적으로 감소하는 가중치로 반영되는 것을 확인할 수 있다. \
 $$
 \begin{aligned}
  \bar{x}_k &= \alpha \cdot (\alpha \cdot \bar{x}_{k-2} + (1 - \alpha) \cdot x_{k-1}) + (1 - \alpha) \cdot x_k
