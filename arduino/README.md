@@ -42,11 +42,20 @@ $x_k = \alpha \cdot x_{k-1} + (1 - \alpha) \cdot z_k$
 * $x_k$: 현재 측정값
 
 상기 식을 전개하면 이전 측정값들이 현재 추정값에 점진적으로 감소하는 가중치로 반영되는 것을 확인할 수 있다.
-
-
-$\bar{x}_k = \alpha \cdot (\alpha \cdot \bar{x}_{k-2} + (1 - \alpha) \cdot x_{k-1}) + (1 - \alpha) \cdot x_k$
 \
-$= \alpha^2 \cdot \bar{x}_{k-2} + \alpha(1 - \alpha) \cdot x_{k-1} + (1 - \alpha) \cdot x_k$
+$$
+\begin{aligned}
+ \bar{x}_k &= \alpha \cdot (\alpha \cdot \bar{x}_{k-2} + (1 - \alpha) \cdot x_{k-1}) + (1 - \alpha) \cdot x_k
+ \\
+           &= \alpha^2 \cdot \bar{x}_{k-2} + \alpha(1 - \alpha) \cdot x_{k-1} + (1 - \alpha) \cdot x_k
+\end{aligned}
+$$
+
+`\bar{x}` 명령어 테스트:
+$$\bar{a} + \bar{b} + \bar{x}$$
+
+**The Cauchy-Schwarz Inequality**\
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
 
 
 여기서 가중치 $\alpha$를 조절하여 필터의 특성을 변경할 수 있다. $\alpha$를 낮게 설정하여 현재 측정값($z_k$)에 더 큰 가중치($1 - \alpha$)를 부여하면, 추정값이 현재 상태를 보다 잘 반영한다. 반대로 $\alpha$를 높게 설정하여 현재 측정값에 낮은 가중치를 부여하면, 노이즈 억제 성능이 향상된다.
