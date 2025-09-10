@@ -18,7 +18,7 @@
 
 ## ⚙️ 기술 스택 및 구현 환경
 
-* **플랫폼**: Ubuntu PC (릴레이 서버), Raspberry Pi (로봇 측 수신부)
+* **플랫폼**: Ubuntu PC (릴레이 서버), Window PC (기준국), Raspberry Pi (로봇 측 수신부)
 * **통신**: TCP/IP (릴레이 서버 경유)
 * **알고리즘**: DGPS 보정 알고리즘
 
